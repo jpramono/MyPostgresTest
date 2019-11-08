@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ~/pgdata/postgresql:/var/lib/postgresql
+#  redis:
+#    image: redis
+          
+  play:
+    #build: .
+    image: user
+    #command: sbt run
+    #volumes:
+    #  -: .:/odysseus
+    ports:
+      - "8089:8089"
+    tty: true
+    depends_on:
+      - db 
+#      - redis
+
